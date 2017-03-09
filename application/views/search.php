@@ -10,22 +10,67 @@
       <div id="main">
 <style>
   .search_inner {
-    background-color:#FFA0A0;
     border:solid 5px;
     border-radius: 10px;
-    text-align: center;
   }
   
   .search_result {
     width: 100%;
   }
+  
+  .search_form_table {
+    width:100%;
+  }
+  .search_form_table th{
+    width:30%;
+    padding-top:5px;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  .search_form_table td{
+    width:70%;
+  }
+  
+  .search_form_table select {
+    height:25px;
+  }
+
+  .search_button {
+    width:175px;
+    height: 30px;
+    border-radius:15px;
+    background-color:ivory;
+  }
+  
+  .search_result {
+    text-align:center;
+  }
+  
+  .search_result td{
+    border-top:solid 1px;
+    font-size: 16px;
+/*    font-weight: bold;*/
+    color: white;
+    letter-spacing: 1px;
+    padding: 2px 0px 2px 0px;
+  }
+  
+  .search_result_header {
+    background-color: indianred;
+  }
+  .search_result_header_left {
+    border-top-left-radius: 5px;
+  }
+  .search_result_header_right {
+    border-top-right-radius: 5px;
+  }
 </style>
 <script>
   function select_big_id(){
     jQuery('[name=category_med]').children().remove();
-    jQuery('[name=category_med]').append("<option value=''>-- カテゴリを選択してください --</option>")
+    jQuery('[name=category_med]').append("<option value=''>  -- 中分類を選択 --  </option>")
     jQuery('[name=category_sml]').children().remove();
-    jQuery('[name=category_sml]').append("<option value=''>-- カテゴリを選択してください --</option>")
+    jQuery('[name=category_sml]').append("<option value=''>  -- 小分類を選択 --  </option>")
     
     jQuery.ajax({
       type: 'post',
@@ -42,7 +87,7 @@
   }
   function select_med_id(){
     jQuery('[name=category_sml]').children().remove();
-    jQuery('[name=category_sml]').append("<option value=''>-- カテゴリを選択してください --</option>")
+    jQuery('[name=category_sml]').append("<option value=''>  -- 小分類を選択 --  </option>")
     jQuery.ajax({
       type: 'post',
       url: '<?php echo base_url(); ?>/ajax/get_sml_categories.html',
@@ -61,12 +106,12 @@
 </script>
         <section class="search_inner">
           <form action="search.html" method="GET" name="search">
-            <table>
+            <table class="search_form_table">
               <tr>
                 <th>エリア</th>
                 <td>
                   <select name="area">
-                    <option value="">-- エリアを選択してください --</option>
+                    <option value="">  -- エリアを選択 --  </option>
                     <?php
                       foreach($areas as $row){
                     ?>
@@ -78,10 +123,10 @@
                 </td>
               </tr>
               <tr>
-                <th rowspan="3">カテゴリ</th>
+                <th>カテゴリ</th>
                 <td>
                   <select name="category_big" onchange="select_big_id()">
-                    <option value="">-- カテゴリを選択してください --</option>
+                    <option value="">  -- 大分類を選択 --  </option>
                     <?php
                       foreach($categories_big as $row){
                     ?>
@@ -90,12 +135,8 @@
                       }
                     ?>
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <td>
                   <select name="category_med" onchange="select_med_id()">
-                    <option value="">-- カテゴリを選択してください --</option>
+                    <option value="">  -- 中分類を選択 --  </option>
                     <?php
                       if($categories_med <> ""){
                         foreach($categories_med as $row){
@@ -106,12 +147,8 @@
                       }
                     ?>
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <td>
                   <select name="category_sml">
-                    <option value="">-- カテゴリを選択してください --</option>
+                    <option value="">  -- 小分類を選択 --  </option>
                     <?php
                       if($categories_sml <> ""){
                         foreach($categories_sml as $row){
@@ -145,33 +182,44 @@
                 <th>フリーワード</th>
                 <td>
                   <input type="text" value="<?php echo $free_word; ?>" name="free_word" placeholder="フリーワードで検索"/>
-                  ※半角スペース区切りでOR検索が可能です。
+                  <span style="font-size:x-small">
+                    ※半角スペース区切りでOR検索が可能です。
+                  </span>
                 </td>
               </tr>
               <tr>
-               <td colspan="2" >
-                 <input type="submit" value="検索" />
-               </td>
+                <th colspan="2">
+                  <input type="submit" class="search_button" value="検索" />
+                </th>
               </tr>
             </table>
+            <div class="">
+            </div>
           </form>
         </section>
         <section class="search_inner">
           <table class="search_result">
-            <tr>
-              <th>エリア</th>
+            <tr class="search_result_header">
+              <th class="search_result_header_left">エリア</th>
               <th>分類</th>
               <th>スポット名称</th>
-              <th></th>
+              <th class="search_result_header_right"></th>
             </tr>
             <?php
                 foreach($result as $row){
+                  $spot_link  = "spot.html?id={$row->id}";
+                  $spot_link .= "&area={$area}";
+                  $spot_link .= "&category_big={$category_big}";
+                  $spot_link .= "&category_med={$category_med}";
+                  $spot_link .= "&category_sml={$category_sml}";
+                  $spot_link .= "&free_word={$free_word}";
+                  $spot_link .= "&page={$page}";
             ?>
             <tr>
               <td><?php echo $row->area_name; ?></td>
               <td><?php echo $row->big_name; ?>/<?php echo $row->med_name; ?>/<?php echo $row->sml_name; ?></td>
               <td><?php echo $row->name; ?></td>
-              <td><a href="">詳細</a></td>
+              <td><a href="<?php echo $spot_link; ?>">詳細</a></td>
             </tr>
             <?php
                 }
