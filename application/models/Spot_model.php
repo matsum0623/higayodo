@@ -72,4 +72,19 @@ class Spot_model extends CI_Model {
         }
         return $this->db->count_all_results();
     }
+    
+    public function getSpotFromId($id)
+    {
+        if($id == '' or $id == null){
+            return false;
+        }
+        $this->db->from('spots');
+        $this->db->join('areas', 'spots.area_id = areas.area_key');
+        $this->db->join('categories_big', 'spots.big_id = categories_big.big_id');
+        $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)');
+        $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
 }
