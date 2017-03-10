@@ -213,7 +213,7 @@
                   $spot_link .= "&category_med={$category_med}";
                   $spot_link .= "&category_sml={$category_sml}";
                   $spot_link .= "&free_word={$free_word}";
-                  $spot_link .= "&page={$page}";
+                  $spot_link .= "&page_num={$page_num}";
             ?>
             <tr>
               <td><?php echo $row->area_name; ?></td>

@@ -30,7 +30,7 @@ class Search extends CI_Controller {
         $data['like'] = $this->input->get('like') ? $this->input->get('like') : array();
         $data['free_word'] = $this->input->get('free_word') ? $this->input->get('free_word') : '';
         $data['result'] = array();
-        $data['page'] = $this->input->get('page') ? $this->input->get('page') : '1';
+        $data['page_num'] = $this->input->get('page_num') ? $this->input->get('page_num') : '1';
 
         // カテゴリ一覧の取得
         $this->load->model('Categories_model');
@@ -52,7 +52,7 @@ class Search extends CI_Controller {
                                         $data['category_sml'],
                                         $data['like'],
                                         explode(" ",$data['free_word']),
-                                        $data['page']
+                                        $data['page_num']
                                     );
             
             // ページネーション用設定
@@ -73,7 +73,7 @@ class Search extends CI_Controller {
             $config['per_page'] = 10;
             $config['use_page_numbers'] = TRUE;
             $config['page_query_string'] = TRUE;
-            $config['query_string_segment'] = 'page';
+            $config['query_string_segment'] = 'page_num';
             
             $this->pagination->initialize($config);
         }
