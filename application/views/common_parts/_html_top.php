@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php echo $title; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ここにサイト説明を入れます">
-  <meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
+  <meta name="description" content="大阪市東淀川区の施設情報データベース">
+  <meta name="keywords" content="東淀川区 井高野 相川 上新庄 淡路 ">
   <base href="<?php echo base_url(); ?>">
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/openclose.js"></script>
