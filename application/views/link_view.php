@@ -9,6 +9,16 @@
     <div class="inner">
       <div id="main">
         <section>
+          <h2>リンク一覧</h2>
+          <ul style="margin-left:30px;">
+            <?php
+              foreach($links as $row){
+            ?>
+            <li><a href="<?php echo $row->link; ?>" target="_blank"><?php echo $row->name; ?></a> - <?php echo $row->comment; ?></li>
+            <?php
+              }
+            ?>
+          </ul>
         </section>
       </div>
       <!--/main-->

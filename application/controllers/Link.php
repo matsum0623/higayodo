@@ -10,10 +10,15 @@ class Link extends CI_Controller {
         $data['page'] = 'link';
         
         $this->load->vars($data);
+        
+        $this->load->model('Link_model');
     }
 
     public function index()
     {
-        $this->load->view('link');
+        $data['links'] = $this->Link_model->get_links_all();
+        
+        
+        $this->load->view('link_view', $data);
     }
 }
