@@ -23,7 +23,7 @@ class Search extends CI_Controller {
         $this->load->model('Area_model');
         $data['areas'] = $this->Area_model->getAllArea();
 
-        $data['area'] = $this->input->get('area') ? $this->input->get('area') : '';
+        $data['area_id'] = $this->input->get('area_id') ? $this->input->get('area_id') : '';
         $data['category_big'] = $this->input->get('category_big') ? $this->input->get('category_big') : '';
         $data['category_med'] = $this->input->get('category_med') ? $this->input->get('category_med') : '';
         $data['category_sml'] = $this->input->get('category_sml') ? $this->input->get('category_sml') : '';
@@ -46,7 +46,7 @@ class Search extends CI_Controller {
 
             $this->load->model('Spot_model');
             $data['result'] = $this->Spot_model->getSpots(
-                                        $data['area'],
+                                        $data['area_id'],
                                         $data['category_big'],
                                         $data['category_med'],
                                         $data['category_sml'],
@@ -57,13 +57,13 @@ class Search extends CI_Controller {
             
             // ページネーション用設定
             $config['base_url'] = base_url()."/search.html?";
-            $config['base_url'] .= "area=".urlencode($data['area']);
+            $config['base_url'] .= "area_id=".urlencode($data['area_id']);
             $config['base_url'] .= "&category_big=".urlencode($data['category_big']);
             $config['base_url'] .= "&category_med=".urlencode($data['category_med']);
             $config['base_url'] .= "&category_sml=".urlencode($data['category_sml']);
             $config['base_url'] .= "&free_word=".urlencode($data['free_word']);
             $config['total_rows'] = $this->Spot_model->getSpotsCount(
-                                            $data['area'],
+                                            $data['area_id'],
                                             $data['category_big'],
                                             $data['category_med'],
                                             $data['category_sml'],

@@ -77,6 +77,15 @@
             </tr>
           </table>
         </section>
+        <?php
+          if($this->session->userdata("is_logged_in") == 1){
+        ?>
+        <section style="text-align:right;">
+          <a href="spot/edit.html?id=<?php echo $spot->id; ?>" >データ修正</a>
+        </section>
+        <?php
+          }
+        ?>
       </div>
       <!--/main-->
 <?php
