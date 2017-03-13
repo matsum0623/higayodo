@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * ユーザページログイン
+ */
 class Login extends CI_Controller {
 
     public function __construct(){
@@ -36,6 +39,9 @@ class Login extends CI_Controller {
     	}
 	}
 	
+	/**
+	 * ログイン実行
+	 */
 	public function do_login()
 	{
     	$this->load->model("User_model");

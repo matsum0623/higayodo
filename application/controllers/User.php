@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * ユーザ専用ページ
+ */
 class User extends CI_Controller {
 
     public function __construct(){

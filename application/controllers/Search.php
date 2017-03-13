@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 施設検索
+ */
 class Search extends CI_Controller {
 
     public function __construct()
@@ -18,6 +21,9 @@ class Search extends CI_Controller {
         $this->load->library('pagination');
     }
 
+    /**
+     * 検索ページ(GETリクエスト時に施設検索)
+     */
     public function index()
     {
         $this->load->model('Area_model');
@@ -82,6 +88,10 @@ class Search extends CI_Controller {
         $this->load->view('search_view',$data);
     }
     
+    /**
+     * 左部分メニューからの遷移
+     * エリア内施設一覧
+     */
     public function area($area_key)
     {
         $this->load->model('Area_model');

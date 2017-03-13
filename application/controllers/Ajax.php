@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Ajax用コントローラ
+ */
 class Ajax extends CI_Controller {
 
     public function __construct(){
@@ -8,6 +11,9 @@ class Ajax extends CI_Controller {
         parent::__construct();
     }
 
+    /**
+     * 中分類一覧取得
+     */
 	public function get_med_categories()
 	{
         if($this->input->post()){
@@ -30,7 +36,10 @@ class Ajax extends CI_Controller {
         }
     }
     
-	public function get_sml_categories()
+    /**
+     * 小分類一覧取得
+     */
+    public function get_sml_categories()
 	{
         if($this->input->post()){
             $big_id = $this->input->post('big_id');
@@ -51,4 +60,5 @@ class Ajax extends CI_Controller {
                  ->set_content_type('application/json')
                  ->set_output(json_encode($res));
         }
-     }}
+    }
+}

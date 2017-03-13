@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * spotsテーブルモデル
+ */
 class Spot_model extends CI_Model {
 
     public function __construct()
@@ -8,6 +11,9 @@ class Spot_model extends CI_Model {
         parent::__construct();
     }
     
+    /**
+     * 条件を指定してスポット一覧を取得
+     */
     public function getSpots($area_id,$big_id,$med_id,$sml_id,$like,$free_word,$page)
     {
         $this->db->from('spots');
@@ -44,6 +50,9 @@ class Spot_model extends CI_Model {
         return $query->result();
     }
     
+    /**
+     * 条件を指定してスポットの件数を取得
+     */
     public function getSpotsCount($area_id,$big_id,$med_id,$sml_id,$like,$free_word)
     {
         $this->db->from('spots');
@@ -73,6 +82,9 @@ class Spot_model extends CI_Model {
         return $this->db->count_all_results();
     }
     
+    /**
+     * IDを指定してスポット情報を取得
+     */
     public function getSpotFromId($id)
     {
         if($id == '' or $id == null){
@@ -88,6 +100,9 @@ class Spot_model extends CI_Model {
         return $query->row();
     }
     
+    /**
+     * スポット情報の更新
+     */
     public function update_spot($id,$data)
     {
         $this->db->where('id',$id);

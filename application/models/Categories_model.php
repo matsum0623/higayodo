@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * categoriesテーブルモデル
+ */
 class Categories_model extends CI_Model {
 
     public function __construct()
@@ -8,6 +11,9 @@ class Categories_model extends CI_Model {
         parent::__construct();
     }
     
+    /**
+     * 大分類一覧の取得
+     */
     public function get_categories_big_all()
     {
         $this->db->from('categories_big');
@@ -15,6 +21,10 @@ class Categories_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    /**
+     * IDを指定して大分類名称の取得
+     */
     public function get_category_big_name_from_id($big_id)
     {
         $this->db->from('categories_big');
@@ -24,6 +34,9 @@ class Categories_model extends CI_Model {
         return $result->big_name;
     }
 
+    /**
+     * 中分類一覧の取得
+     */
     public function get_categories_med($big_id)
     {
         $this->db->from('categories_medium');
@@ -32,6 +45,10 @@ class Categories_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    /**
+     * IDを指定して中分類名称を取得
+     */
     public function get_category_med_name_from_id($big_id,$med_id)
     {
         $this->db->from('categories_medium');
@@ -42,6 +59,9 @@ class Categories_model extends CI_Model {
         return $result->med_name;
     }
     
+    /**
+     * 小分類一覧の取得
+     */
     public function get_categories_sml($big_id,$med_id)
     {
         $this->db->from('categories_small');
@@ -50,6 +70,10 @@ class Categories_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    /**
+     * IDを指定して小分類名称の取得
+     */
     public function get_category_sml_name_from_id($big_id,$med_id,$sml_id)
     {
         $this->db->from('categories_small');

@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * areasテーブルモデル
+ */
 class Area_model extends CI_Model {
 
     public function __construct()
@@ -8,6 +11,9 @@ class Area_model extends CI_Model {
         parent::__construct();
     }
     
+    /**
+     * 全てのエリア情報を取得
+     */
     public function getAllArea()
     {
         $this->db->from('areas');
@@ -16,6 +22,9 @@ class Area_model extends CI_Model {
         return $query->result();
     }
     
+    /**
+     * 全てのエリア情報を取得
+     */
     public function get_areas_all()
     {
         $this->db->from('areas');
@@ -24,6 +33,9 @@ class Area_model extends CI_Model {
         return $query->result();
     }
     
+    /**
+     * ID指定してエリア名称を取得
+     */
     public function get_area_name_from_id($area_id)
     {
         $this->db->from('areas');
@@ -33,6 +45,9 @@ class Area_model extends CI_Model {
         return $result->area_name;
     }
     
+    /**
+     * KEY指定してエリアIDを取得
+     */
     public function get_area_id_from_key($area_key)
     {
         $this->db->from('areas');

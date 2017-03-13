@@ -1,6 +1,8 @@
-﻿<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * リンク一覧
+ */
 class Link extends CI_Controller {
 
     public function __construct(){

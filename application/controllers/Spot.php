@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 施設詳細
+ */
 class Spot extends CI_Controller {
 
     public function __construct()
@@ -18,6 +21,9 @@ class Spot extends CI_Controller {
         $this->load->model('Spot_model');
     }
 
+    /**
+     * 施設詳細の表示
+     */
     public function index()
     {
         $data['id'] = $this->input->get('id') ? $this->input->get('id') : '';
@@ -47,6 +53,9 @@ class Spot extends CI_Controller {
         $this->load->view('spot_view',$data);
     }
     
+    /**
+     * 施設情報編集
+     */
     public function edit()
     {
         if( ! $this->session->userdata("is_logged_in")){
@@ -69,6 +78,10 @@ class Spot extends CI_Controller {
         
         $this->load->view('spot_edit_view',$data);
     }
+    
+    /**
+     * 施設情報アップデート
+     */
     public function update(){
         if( ! $this->session->userdata("is_logged_in")){
             redirect('home');
