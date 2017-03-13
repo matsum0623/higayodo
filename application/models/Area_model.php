@@ -15,4 +15,21 @@ class Area_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    public function get_areas_all()
+    {
+        $this->db->from('areas');
+        $this->db->order_by('area_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+    public function get_area_name_from_id($area_id)
+    {
+        $this->db->from('areas');
+        $this->db->where('area_id',$area_id);
+        $query = $this->db->get();
+        $result = $query->row();
+        return $result->area_name;
+    }
 }

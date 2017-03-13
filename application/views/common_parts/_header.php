@@ -1,8 +1,8 @@
 <header>
   <div class="inner">
     <h1 id="logo">
-      <a href="index.html">
-        <img src="images/logo.png" alt="Sample Cafe"/>
+      <a href="home.html" style="text-decoration:none;">
+        <h2>東淀川データベース</h1>
       </a>
     </h1>
     <!--PC用（571px以上端末）メニュー-->

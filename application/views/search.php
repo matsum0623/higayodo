@@ -110,12 +110,12 @@
               <tr>
                 <th>エリア</th>
                 <td>
-                  <select name="area">
+                  <select name="area_id">
                     <option value="">  -- エリアを選択 --  </option>
                     <?php
                       foreach($areas as $row){
                     ?>
-                    <option value="<?php echo $row->area_key; ?>" <?php if($row->area_key == $area){ ?>selected<?php } ?>><?php echo $row->area_name; ?></option>
+                    <option value="<?php echo $row->area_id; ?>" <?php if($row->area_id == $area_id){ ?>selected<?php } ?>><?php echo $row->area_name; ?></option>
                     <?php
                       }
                     ?>
@@ -208,7 +208,7 @@
             <?php
                 foreach($result as $row){
                   $spot_link  = "spot.html?id={$row->id}";
-                  $spot_link .= "&area={$area}";
+                  $spot_link .= "&area_id={$area_id}";
                   $spot_link .= "&category_big={$category_big}";
                   $spot_link .= "&category_med={$category_med}";
                   $spot_link .= "&category_sml={$category_sml}";

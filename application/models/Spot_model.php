@@ -8,15 +8,15 @@ class Spot_model extends CI_Model {
         parent::__construct();
     }
     
-    public function getSpots($area,$big_id,$med_id,$sml_id,$like,$free_word,$page)
+    public function getSpots($area_id,$big_id,$med_id,$sml_id,$like,$free_word,$page)
     {
         $this->db->from('spots');
-        $this->db->join('areas', 'spots.area_id = areas.area_key');
+        $this->db->join('areas', 'spots.area_id = areas.area_id');
         $this->db->join('categories_big', 'spots.big_id = categories_big.big_id');
         $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)');
         $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)');
-        if($area <> ''){
-            $this->db->where(array('spots.area_id' => $area));
+        if($area_id <> ''){
+            $this->db->where(array('spots.area_id' => $area_id));
         }
         if($big_id <> ''){
             $this->db->where(array('spots.big_id' => $big_id));
@@ -44,11 +44,11 @@ class Spot_model extends CI_Model {
         return $query->result();
     }
     
-    public function getSpotsCount($area,$big_id,$med_id,$sml_id,$like,$free_word)
+    public function getSpotsCount($area_id,$big_id,$med_id,$sml_id,$like,$free_word)
     {
         $this->db->from('spots');
-        if($area <> ''){
-            $this->db->where(array('area_id' => $area));
+        if($area_id <> ''){
+            $this->db->where(array('area_id' => $area_id));
         }
         if($big_id <> ''){
             $this->db->where(array('big_id' => $big_id));
@@ -79,12 +79,19 @@ class Spot_model extends CI_Model {
             return false;
         }
         $this->db->from('spots');
-        $this->db->join('areas', 'spots.area_id = areas.area_key');
+        $this->db->join('areas', 'spots.area_id = areas.area_id');
         $this->db->join('categories_big', 'spots.big_id = categories_big.big_id');
         $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)');
         $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)');
         $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->row();
+    }
+    
+    public function update_spot($id,$data)
+    {
+        $this->db->where('id',$id);
+        $this->db->set($data);
+        $this->db->update('spots');
     }
 }

@@ -13,7 +13,7 @@
       </div>
       <!--/main-->
 <?php
-    require_once "common_parts/_sub.php";
+    require_once "common_parts/_user_sub_view.php";
     require_once "common_parts/_footer.php";
 ?>
     </div>
