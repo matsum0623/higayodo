@@ -92,6 +92,7 @@ class Spot_model extends CI_Model {
     {
         $this->db->where('id',$id);
         $this->db->set($data);
+        $this->db->set('upd_time',date('Y/m/d H:i:s'));
         $this->db->update('spots');
     }
 }

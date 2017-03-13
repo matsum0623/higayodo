@@ -32,4 +32,13 @@ class Area_model extends CI_Model {
         $result = $query->row();
         return $result->area_name;
     }
+    
+    public function get_area_id_from_key($area_key)
+    {
+        $this->db->from('areas');
+        $this->db->where('area_key',$area_key);
+        $query = $this->db->get();
+        $result = $query->row();
+        return $result->area_id;
+    }
 }

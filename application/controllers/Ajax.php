@@ -28,7 +28,8 @@ class Ajax extends CI_Controller {
                  ->set_content_type('application/json')
                  ->set_output(json_encode($res));
         }
-     }
+    }
+    
 	public function get_sml_categories()
 	{
         if($this->input->post()){

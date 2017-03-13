@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bulletin extends CI_Controller {
@@ -14,6 +14,6 @@ class Bulletin extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('bulletin');
+        $this->load->view('bulletin_view');
     }
 }
