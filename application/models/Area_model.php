@@ -56,4 +56,31 @@ class Area_model extends CI_Model {
         $result = $query->row();
         return $result->area_id;
     }
+    
+    /**
+     * エリア一覧のアップデート
+     */
+    public function update_area($area_id,$area_key,$area_name)
+    {
+        $this->db->where('area_id',$area_id);
+        $this->db->set('area_key',$area_key);
+        $this->db->set('area_name',$area_name);
+        $this->db->update('areas');
+    }
+    
+    public function regist($area_key,$area_name)
+    {
+        $this->db->set(array(
+                'area_key' => $area_key,
+                'area_name' => $area_name
+            ));
+        $this->db->insert('areas');
+    }
+
+    public function delete($area_id)
+    {
+        $this->db->where('area_id',$area_id);
+        $this->db->delete('areas');
+    }
+
 }

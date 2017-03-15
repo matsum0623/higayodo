@@ -31,7 +31,11 @@ class Categories_model extends CI_Model {
         $this->db->where('big_id',$big_id);
         $query = $this->db->get();
         $result = $query->row();
-        return $result->big_name;
+        if(count($result) == 0){
+            return '';
+        }else{
+            return $result->big_name;
+        }
     }
 
     /**
@@ -56,7 +60,11 @@ class Categories_model extends CI_Model {
         $this->db->where('med_id',$med_id);
         $query = $this->db->get();
         $result = $query->row();
-        return $result->med_name;
+        if(count($result) == 0){
+            return '';
+        }else{
+            return $result->med_name;
+        }
     }
     
     /**
@@ -82,6 +90,10 @@ class Categories_model extends CI_Model {
         $this->db->where('sml_id',$sml_id);
         $query = $this->db->get();
         $result = $query->row();
-        return $result->sml_name;
+        if(count($result) == 0){
+            return '';
+        }else{
+            return $result->sml_name;
+        }
     }
 }

@@ -5,6 +5,19 @@
 <?php
     require_once "common_parts/_header.php";
 ?>
+<style>
+  .pagenation {
+    text-align:center;
+  }
+  .pagenation strong{
+    margin-left:5px;
+    margin-right:5px;
+  }
+  .pagenation a{
+    margin-left:5px;
+    margin-right:5px;
+  }
+</style>
   <div id="contents">
     <div class="inner">
       <div id="main">
@@ -66,23 +79,6 @@
                   </select>
                 </td>
               </tr>
-<?php
-/*
-              <tr>
-                ?>
-                <th>こだわり検索</th>
-                <td>
-                <?php
-                    foreach($likes as $key => $val){
-                ?>
-                  <label><input type="checkbox" name="like[]" value="<?php echo $key; ?>" <?php if(in_array($key,$like)){ ?>checked<?php } ?>><?php echo $val; ?></label>
-                <?php
-                    }
-                ?>
-                </td>
-              </tr>
-*/
-?>
               <tr>
                 <th>フリーワード</th>
                 <td>
@@ -122,15 +118,17 @@
             ?>
             <tr>
               <td><?php echo $row->area_name; ?></td>
-              <td><?php echo $row->big_name; ?>/<?php echo $row->med_name; ?>/<?php echo $row->sml_name; ?></td>
+              <td><?php echo $row->big_name; ?><?php echo $row->med_name <> '' ? '/'.$row->med_name : ''; ?><?php echo $row->sml_name <> '' ? '/'.$row->sml_name : ''; ?></td>
               <td><?php echo $row->name; ?></td>
-              <td><a href="<?php echo $spot_link; ?>">詳細</a></td>
+              <td><a href="<?php echo $spot_link; ?>" target="_blank">詳細</a></td>
             </tr>
             <?php
                 }
             ?>
           </table>
-          <?php echo $this->pagination->create_links(); ?>
+          <div class="pagenation">
+            <?php echo $this->pagination->create_links(); ?>
+          </div>
         </section>
       </div>
       <!--/main-->

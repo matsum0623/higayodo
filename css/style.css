@@ -68,6 +68,7 @@
     text-align:center;
     border-top : solid 1px;
     border-bottom : solid 1px;
+    width: 120px;
   }
 
   .spot_table td{
@@ -88,3 +89,14 @@
   .spot_table_header_bottom_left {
     border-bottom-left-radius: 5px;
   }
+  
+  #sub .ad_zone {
+    border:solid 1px;
+    margin-top:5px;
+    margin-bottom:5px;
+    background-color:white;
+    color:black;
+    height:45px;
+    text-align:center;
+  }
+  

@@ -19,8 +19,8 @@ class Spot_model extends CI_Model {
         $this->db->from('spots');
         $this->db->join('areas', 'spots.area_id = areas.area_id');
         $this->db->join('categories_big', 'spots.big_id = categories_big.big_id');
-        $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)');
-        $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)');
+        $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)','left');
+        $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)','left');
         if($area_id <> ''){
             $this->db->where(array('spots.area_id' => $area_id));
         }
@@ -109,5 +109,11 @@ class Spot_model extends CI_Model {
         $this->db->set($data);
         $this->db->set('upd_time',date('Y/m/d H:i:s'));
         $this->db->update('spots');
+    }
+    
+    public function regist($data)
+    {
+        $this->db->set($data);
+        $this->db->insert('spots');
     }
 }

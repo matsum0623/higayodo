@@ -8,6 +8,9 @@ class Link extends CI_Controller {
     public function __construct(){
         parent::__construct();
         
+        $this->load->model('News_model');
+	    $data['news']  = $this->News_model->getNews(10);
+
         $data['title'] = 'リンク / 東淀川区 地域情報データベース';
         $data['page'] = 'link';
         

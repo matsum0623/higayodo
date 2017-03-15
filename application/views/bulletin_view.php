@@ -9,6 +9,7 @@
     <div class="inner">
       <div id="main">
         <section>
+          <p>準備中</p>
         </section>
       </div>
       <!--/main-->

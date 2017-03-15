@@ -25,7 +25,7 @@
             </tr>
             <tr>
               <th>住所</th>
-              <td><?php echo $spot->address; ?></td>
+              <td><a href="https://maps.google.co.jp/maps/search/<?php echo $spot->address; ?>" target="_blank"><?php echo $spot->address; ?></a></td>
             </tr>
             <tr>
               <th>営業時間</th>
@@ -37,7 +37,7 @@
             </tr>
             <tr>
               <th>HP</th>
-              <td><?php echo $spot->url; ?></td>
+              <td><a href="<?php echo $spot->url; ?>" target="_blank"><?php echo $spot->url; ?></a></td>
             </tr>
             <tr>
               <th>登録日時</th>

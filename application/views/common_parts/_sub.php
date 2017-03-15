@@ -1,4 +1,7 @@
 <div id="sub">
+  <div class="ad_zone">
+    広告募集中
+  </div>
   <nav>
     <h2>地域メニュー</h2>
     <ul class="submenu">

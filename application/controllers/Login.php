@@ -16,7 +16,7 @@ class Login extends CI_Controller {
         
         $this->load->helper('form');
     	if($this->session->userdata("is_logged_in")){
-    	    redirect('user');
+    	    redirect('admin/home');
     	}
 	}
 
@@ -33,7 +33,7 @@ class Login extends CI_Controller {
         		"is_logged_in" => 1
         	);
         	$this->session->set_userdata($data);
-    	    redirect('user');
+    	    redirect('admin/home');
     	}else{
     		$this->load->view('login_view');
     	}
