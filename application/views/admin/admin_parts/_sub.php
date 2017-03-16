@@ -6,6 +6,7 @@
       <li><a href="admin/category.html">分類編集</a></li>
       <li><a href="admin/spot.html"    >スポット管理</a></li>
       <li><a href="admin/news.html"    >新着情報登録</a></li>
+      <li><a href="admin/link.html"    >リンク一覧管理</a></li>
       <li><a href="admin/bbs.html"     >掲示板管理</a></li>
     </ul>
   </nav>
