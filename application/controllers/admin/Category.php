@@ -56,7 +56,7 @@ class Category extends CI_Controller {
 			redirect('home');
 		}
 		$flg = $this->input->post('flg');
-		echo $flg;
+
 		if($flg == 'big'){
 		    $big_id = $this->input->post('big_id');
 		    $big_name = $this->input->post('big_name');

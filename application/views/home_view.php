@@ -1,9 +1,9 @@
 <?php
-    require_once "common_parts/_html_top.php";
+    require_once APPPATH."views/common_parts/_html_top.php";
 ?>
 <body id="top">
 <?php
-    require_once "common_parts/_header.php";
+    require_once APPPATH."views/common_parts/_header.php";
 ?>
   <div id="contents">
     <div class="inner">
@@ -20,24 +20,23 @@
           <h3>掲載内容について</h3>
           <p>
             ネットでの情報収集を中心に、実際に現地にて確認した情報を随時追加していきます。<br>
-            掲載内容について、削除・修正などは<a href="mailto:<?php echo ADMIN_MAIL_ADDRESS; ?>"><strong>こちら</strong></a>からお願いします。
           </p>
         </section>
 <?php
-    require_once "common_parts/_news.php";
+    require_once APPPATH."views/common_parts/_news.php";
 ?>
       </div>
       <!--/main-->
 <?php
-    require_once "common_parts/_sub.php";
-    require_once "common_parts/_footer.php";
+    require_once APPPATH."views/common_parts/_sub.php";
+    require_once APPPATH."views/common_parts/_footer.php";
 ?>
     </div>
     <!--/inner-->
   </div>
   <!--/contents-->
 <?php
-    require_once "common_parts/_add_js.php";
+    require_once APPPATH."views/common_parts/_add_js.php";
 ?>
 </body>
 </html>
