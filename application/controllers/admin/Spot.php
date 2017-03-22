@@ -55,6 +55,7 @@ class Spot extends CI_Controller {
         $data['close_time'] = $this->input->post('close_time');
         $data['closed'] = $this->input->post('closed');
         $data['url'] = $this->input->post('url');
+        $data['comment'] = $this->input->post('comment');
 
         if($this->input->post('check') == 'no'){
         	$this->load->view('admin/spot_regist_check_view',$data);
@@ -72,6 +73,7 @@ class Spot extends CI_Controller {
         			'close_time' => $data['close_time'],
         			'closed'     => $data['closed'],
         			'url'        => $data['url'],
+        			'comment'    => $data['comment'],
         			'reg_time' => date('Y/m/d H:i:s')
         		));
     		redirect('admin/spot');

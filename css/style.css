@@ -75,10 +75,10 @@
     border-top:solid 1px;
     border-bottom : solid 1px;
     font-size: 16px;
-/*    font-weight: bold;*/
     color: white;
     letter-spacing: 1px;
-    padding: 2px 0px 2px 0px;
+    padding: 2px 0px 2px 5px;
+    text-align: left;
   }
   .spot_table_header {
     background-color: indianred;

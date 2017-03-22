@@ -99,8 +99,14 @@
                 <td><input type="text" name="closed" value="<?php echo $spot->closed; ?>" /></td>
               </tr>
               <tr>
-                <th class="spot_table_header_bottom_left">HP</th>
+                <th>HP</th>
                 <td><input type="text" name="url" value="<?php echo $spot->url; ?>" /></td>
+              </tr>
+              <tr>
+                <th class="spot_table_header_bottom_left">コメント</th>
+                <td>
+                  <textarea name="comment" rows="20" cols="84%"><?php echo $spot->comment; ?></textarea>
+                </td>
               </tr>
             </table>
           </section>

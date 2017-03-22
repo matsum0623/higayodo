@@ -40,6 +40,12 @@
               <td><a href="<?php echo $spot->url; ?>" target="_blank"><?php echo $spot->url; ?></a></td>
             </tr>
             <tr>
+              <th></th>
+              <td>
+                <?php echo $spot->comment; ?>
+              </td>
+            </tr>
+            <tr>
               <th>登録日時</th>
               <td><?php echo $spot->reg_time; ?></td>
             </tr>

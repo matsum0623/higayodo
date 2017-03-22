@@ -62,8 +62,12 @@
                 <td><?php echo $closed; ?></td>
               </tr>
               <tr>
-                <th class="spot_table_header_bottom_left">HP</th>
+                <th>HP</th>
                 <td><?php echo $url; ?></td>
+              </tr>
+              <tr>
+                <th class="spot_table_header_bottom_left">コメント</th>
+                <td><pre><?php echo html_escape($comment); ?></pre></td>
               </tr>
             </table>
           </section>
@@ -81,6 +85,7 @@
           <input type="hidden" name="close_time" value="<?php echo $close_time; ?>"/>
           <input type="hidden" name="closed" value="<?php echo $closed; ?>"/>
           <input type="hidden" name="url" value="<?php echo $url; ?>"/>
+          <input type="hidden" name="comment" value="<?php echo html_escape($comment); ?>"/>
           <input type="hidden" name="check" value="yes"/>
           <input type="submit" value="登録"/>
           <?php

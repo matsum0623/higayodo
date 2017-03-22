@@ -18,7 +18,7 @@ class Spot_model extends CI_Model {
     {
         $this->db->from('spots');
         $this->db->join('areas', 'spots.area_id = areas.area_id');
-        $this->db->join('categories_big', 'spots.big_id = categories_big.big_id');
+        $this->db->join('categories_big', 'spots.big_id = categories_big.big_id','left');
         $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)','left');
         $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)','left');
         if($area_id <> ''){
@@ -44,7 +44,10 @@ class Spot_model extends CI_Model {
             }
             $this->db->group_end();
         }
-        $this->db->order_by('id');
+        $this->db->order_by('spots.big_id');
+        $this->db->order_by('spots.med_id');
+        $this->db->order_by('spots.sml_id');
+        $this->db->order_by('spots.name_kana');
         $this->db->limit(10,($page-1)*10);
         $query = $this->db->get();
         return $query->result();
@@ -90,11 +93,15 @@ class Spot_model extends CI_Model {
         if($id == '' or $id == null){
             return false;
         }
+        $this->db->select('spots.*,areas.*,categories_big.*,categories_medium.*,categories_small.*');
+        $this->db->select('spots.big_id as big_id');
+        $this->db->select('spots.med_id as med_id');
+        $this->db->select('spots.sml_id as sml_id');
         $this->db->from('spots');
         $this->db->join('areas', 'spots.area_id = areas.area_id');
-        $this->db->join('categories_big', 'spots.big_id = categories_big.big_id');
-        $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)');
-        $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)');
+        $this->db->join('categories_big', 'spots.big_id = categories_big.big_id','left');
+        $this->db->join('categories_medium', 'CONCAT(spots.big_id,spots.med_id) = CONCAT(categories_medium.big_id,categories_medium.med_id)','left');
+        $this->db->join('categories_small', 'CONCAT(spots.big_id,spots.med_id,spots.sml_id) = CONCAT(categories_small.big_id,categories_small.med_id,categories_small.sml_id)','left');
         $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->row();

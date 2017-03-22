@@ -125,8 +125,14 @@
                 <td><input type="text" name="closed" value="" /></td>
               </tr>
               <tr>
-                <th class="spot_table_header_bottom_left">HP</th>
+                <th>HP</th>
                 <td><input type="text" name="url" value="" /></td>
+              </tr>
+              <tr>
+                <th>コメント</th>
+                <td>
+                  <textarea name="comment" rows="20" cols="84%"></textarea>
+                </td>
               </tr>
             </table>
           </section>

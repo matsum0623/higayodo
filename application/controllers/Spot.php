@@ -82,7 +82,8 @@ class Spot extends CI_Controller {
     /**
      * 施設情報アップデート
      */
-    public function update(){
+    public function update()
+    {
         if( ! $this->session->userdata("is_logged_in")){
             redirect('home');
         }
@@ -108,6 +109,7 @@ class Spot extends CI_Controller {
         $data['close_time'] = $this->input->post('close_time');
         $data['closed']     = $this->input->post('closed');
         $data['url']        = $this->input->post('url');
+        $data['comment']        = $this->input->post('comment');
 
         if($this->input->post('check') == 'yes'){
             $this->load->model('Spot_model');
@@ -124,6 +126,7 @@ class Spot extends CI_Controller {
                 'close_time' => $data['close_time'],
                 'closed' => $data['closed'],
                 'url' => $data['url'],
+                'comment' => $data['comment'],
             );
             $this->Spot_model->update_spot($data['id'],$update_data);
             // spot情報取得
