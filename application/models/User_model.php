@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * usersテーブルモデル
+ */
 class User_model extends CI_Model {
 
     public function __construct()
@@ -8,6 +11,9 @@ class User_model extends CI_Model {
         parent::__construct();
     }
     
+    /**
+     * ログイン可能かどうか判定
+     */
     public function can_log_in()
     {
 		$this->db->where("user_name", $this->input->post("user_name"));	//POSTされたemailデータとDB情報を照合する

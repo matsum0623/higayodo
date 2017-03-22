@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 施設詳細
+ */
 class Spot extends CI_Controller {
 
     public function __construct()
@@ -18,6 +21,9 @@ class Spot extends CI_Controller {
         $this->load->model('Spot_model');
     }
 
+    /**
+     * 施設詳細の表示
+     */
     public function index()
     {
         $data['id'] = $this->input->get('id') ? $this->input->get('id') : '';
@@ -47,6 +53,9 @@ class Spot extends CI_Controller {
         $this->load->view('spot_view',$data);
     }
     
+    /**
+     * 施設情報編集
+     */
     public function edit()
     {
         if( ! $this->session->userdata("is_logged_in")){
@@ -69,7 +78,12 @@ class Spot extends CI_Controller {
         
         $this->load->view('spot_edit_view',$data);
     }
-    public function update(){
+    
+    /**
+     * 施設情報アップデート
+     */
+    public function update()
+    {
         if( ! $this->session->userdata("is_logged_in")){
             redirect('home');
         }
@@ -95,6 +109,7 @@ class Spot extends CI_Controller {
         $data['close_time'] = $this->input->post('close_time');
         $data['closed']     = $this->input->post('closed');
         $data['url']        = $this->input->post('url');
+        $data['comment']        = $this->input->post('comment');
 
         if($this->input->post('check') == 'yes'){
             $this->load->model('Spot_model');
@@ -111,6 +126,7 @@ class Spot extends CI_Controller {
                 'close_time' => $data['close_time'],
                 'closed' => $data['closed'],
                 'url' => $data['url'],
+                'comment' => $data['comment'],
             );
             $this->Spot_model->update_spot($data['id'],$update_data);
             // spot情報取得

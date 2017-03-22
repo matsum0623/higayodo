@@ -1,6 +1,9 @@
-﻿<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 掲示板
+ */
 class Bulletin extends CI_Controller {
 
     public function __construct(){
@@ -14,6 +17,6 @@ class Bulletin extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('bulletin');
+        $this->load->view('bulletin_view');
     }
 }

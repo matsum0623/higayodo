@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * ユーザページログイン
+ */
 class Login extends CI_Controller {
 
     public function __construct(){
@@ -13,7 +16,7 @@ class Login extends CI_Controller {
         
         $this->load->helper('form');
     	if($this->session->userdata("is_logged_in")){
-    	    redirect('user');
+    	    redirect('admin/home');
     	}
 	}
 
@@ -30,12 +33,15 @@ class Login extends CI_Controller {
         		"is_logged_in" => 1
         	);
         	$this->session->set_userdata($data);
-    	    redirect('user');
+    	    redirect('admin/home');
     	}else{
     		$this->load->view('login_view');
     	}
 	}
 	
+	/**
+	 * ログイン実行
+	 */
 	public function do_login()
 	{
     	$this->load->model("User_model");

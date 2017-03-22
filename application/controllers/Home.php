@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * トップページ
+ */
 class Home extends CI_Controller {
 
     public function __construct(){
@@ -18,6 +21,6 @@ class Home extends CI_Controller {
 	{
 	    $data['news']  = $this->News_model->getNews(10);
 
-		$this->load->view('home',$data);
+		$this->load->view('home_view',$data);
 	}
 }

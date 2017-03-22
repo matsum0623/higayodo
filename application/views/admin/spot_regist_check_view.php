@@ -1,22 +1,18 @@
 <?php
-    require_once "common_parts/_html_top.php";
+    require_once "admin_parts/_html_top.php";
 ?>
 <body id="top">
 <?php
-    require_once "common_parts/_header.php";
+    require_once "admin_parts/_header.php";
 ?>
   <div id="contents">
     <div class="inner">
       <div id="main">
-        <a href="search.html">検索</a>　＞　<a href="">検索結果一覧</a>　＞　<a href=""><?php echo $name; ?></a>　＞　更新内容確認
-        <form action="spot/update.html" method="POST">
-          <p>以下の内容で更新します。</p>
+        <a href="home.html">トップ</a>　＞　新規施設登録
+        <form action="admin/spot/regist.html" method="POST">
+          <p>以下の内容で登録します。</p>
           <section class="spot_inner">
             <table class="spot_table">
-              <tr>
-                <th class="spot_table_header_top_left">スポットID</th>
-                <td><?php echo $id; ?></td>
-              </tr>
               <tr>
                 <th>名称</th>
                 <td><?php echo $name; ?></td>
@@ -71,14 +67,13 @@
               </tr>
               <tr>
                 <th class="spot_table_header_bottom_left">コメント</th>
-                <td><?php echo html_escape($comment); ?></td>
+                <td><pre><?php echo html_escape($comment); ?></pre></td>
               </tr>
             </table>
           </section>
           <?php
             if($this->session->userdata("is_logged_in") == 1){
           ?>
-          <input type="hidden" name="id" value="<?php echo $id; ?>"/>
           <input type="hidden" name="name" value="<?php echo $name; ?>"/>
           <input type="hidden" name="name_kana" value="<?php echo $name_kana; ?>"/>
           <input type="hidden" name="area_id" value="<?php echo $area_id; ?>"/>
@@ -92,7 +87,7 @@
           <input type="hidden" name="url" value="<?php echo $url; ?>"/>
           <input type="hidden" name="comment" value="<?php echo html_escape($comment); ?>"/>
           <input type="hidden" name="check" value="yes"/>
-          <input type="submit" value="更新"/>
+          <input type="submit" value="登録"/>
           <?php
             }
           ?>
@@ -100,15 +95,15 @@
       </div>
       <!--/main-->
 <?php
-    require_once "common_parts/_sub.php";
-    require_once "common_parts/_footer.php";
+    require_once "admin_parts/_sub.php";
+    require_once "admin_parts/_footer.php";
 ?>
     </div>
     <!--/inner-->
   </div>
   <!--/contents-->
 <?php
-    require_once "common_parts/_add_js.php";
+    require_once "admin_parts/_add_js.php";
 ?>
 </body>
 </html>
